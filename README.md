@@ -1,6 +1,2 @@
 # homepage
-my profile page
-
-hello！！！！！
-
-EMOOOOOOO
+My homepage is here.
