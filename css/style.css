@@ -20,7 +20,7 @@ body {
     line-height : 1.8em;
     color       : #3d3d50;
     font-weight : 300;
-    background  : grey;
+    background  : #EBE9EB;
     }
 
 /* --------------------------------------
@@ -109,9 +109,10 @@ ul {
 .btn {
     padding        : 14px 30px 11px;
     margin-bottom  : 0;
+    margin-right: 10px;
     font-size      : 14px;
     font-weight    : 500;
-    border-radius  : 0;
+    border-radius  : 5px;
     border         : 0;
     text-transform : uppercase;
     }
@@ -127,6 +128,7 @@ ul {
     background-color : #FFC107;
     }
 
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active:focus {
@@ -135,17 +137,17 @@ ul {
 
 /*btn-default*/
 .btn-default {
-    color            : #2a54f5;
+    color            : #FFC107;
     background-color : transparent;
-    border           : 2px solid #2a54f5;
+    border           : 2px solid #FFC107;
     }
 
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active:focus {
-    background   : #2a54f5;
+    background   : #ff9800;
     color        : #ffffff;
-    border-color : #2a54f5;
+    border-color : #ff9800;
     }
 
 button:focus,
@@ -153,6 +155,7 @@ button:focus,
 .btn:active:focus {
     outline : none;
     }
+
 
 /* --------------------
  * Column Block
