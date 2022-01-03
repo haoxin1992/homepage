@@ -30,7 +30,18 @@
             <div class="status-mes"></div>
         </div>
     </div>
-
+<!--Page float nav-->
+    <nav class="floating-menu">
+        <div data-spy="affix" id="dot-nav">
+            <ul>
+                <li class="awesome-tooltip active" title="Home"><a href="#home"></a></li>
+                <li class="awesome-tooltip" title="Primary"><a href="#primary_area"></a></li>
+                <li class="awesome-tooltip" title="Experience"><a href="#experience"></a></li>
+                <li class="awesome-tooltip" title="Publication"><a href="#publication"></a></li>
+                <li class="awesome-tooltip" title="Mentor"><a href="#mentor"></a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="columns-block container">
         <div class="left-col-block blocks">
             <header class="header theStickySidebar">
@@ -38,7 +49,7 @@
                     <img src="img/img-profile.jpg" class="img-responsive" alt=""/>
                 </div>
                 <div class="content">
-                    <h1 style="font-size: 3vw;">HAOXIN WANG</h1>
+                    <h1 style="font-size: 30px;">HAOXIN WANG</h1>
                     <span class="lead" style="font-size: 1.5vw; font-weight: bold;">Research Scientist</span><br>
                     <span class="lead" style="font-size: 1.1vw;">Toyota Motor North America R&D - InfoTech Labs</span>
 
@@ -87,7 +98,7 @@
 
         <div class="right-col-block blocks">
             <div class="theiaStickySidebar">
-                <section class="expertise-wrapper section-wrapper gray-bg">
+                <section class="expertise-wrapper section-wrapper gray-bg" id="primary_area">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
@@ -166,7 +177,7 @@
                 <!-- .expertise-wrapper -->
 
 
-                <section class="section-wrapper section-experience gray-bg">
+                <section class="section-wrapper section-experience gray-bg" id="experience">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
@@ -258,7 +269,7 @@
 
                 <!-- section-publication -->
 
-                <section class="section-wrapper section-interest gray-bg">
+                <section class="section-wrapper section-interest gray-bg" id="publication">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
@@ -365,7 +376,7 @@
 
 
 
-                <section class="section-wrapper section-interest gray-bg">
+                <section class="section-wrapper section-interest gray-bg" id="mentor">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
@@ -482,9 +493,71 @@
 <!-- jquery -->
 <script src="js/jquery-2.1.4.min.js"></script>
 
+
+</body>
 <!-- Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/theia-sticky-sidebar.js"></script>
 <script src="js/scripts.js"></script>
-</body>
+<script>
+    $(document).ready(function(){
+        $('.awesome-tooltip').tooltip({
+            placement: 'left'
+        });
+
+        $(window).bind('scroll',function(e){
+            dotnavigation();
+        });
+
+        function dotnavigation(){
+
+            var numSections = $('section').length;
+
+            $('#dot-nav li a').removeClass('active').parent('li').removeClass('active');
+            $('section').each(function(i,item){
+                var ele = $(item), nextTop;
+
+                console.log(ele.next().html());
+
+                if (typeof ele.next().offset() != "undefined") {
+                    nextTop = ele.next().offset().top;
+                }
+                else {
+                    nextTop = $(document).height();
+                }
+
+                if (ele.offset() !== null) {
+                    thisTop = ele.offset().top - ((nextTop - ele.offset().top) / numSections);
+                }
+                else {
+                    thisTop = 0;
+                }
+
+                var docTop = $(document).scrollTop();
+
+                if(docTop >= thisTop && (docTop < nextTop)){
+                    $('#dot-nav li').eq(i).addClass('active');
+                }
+            });
+        }
+
+        /* get clicks working */
+        $('#dot-nav li').click(function(){
+
+            var id = $(this).find('a').attr("href"),
+                posi,
+                ele,
+                padding = 0;
+
+            ele = $(id);
+            posi = ($(ele).offset()||0).top - padding;
+
+            $('html, body').animate({scrollTop:posi}, 'slow');
+
+            return false;
+        });
+
+        /* end dot nav */
+    });
+</script>
 </html>
